@@ -4,23 +4,23 @@ import test from '@lib/BaseTest';
 let access_token: string;
 
 test.beforeEach(async ({ request }) => {
-  const headers = {
-                      "accept": "application/json",
-                      "Content-Type": "application/x-www-form-urlencoded"
-                  }
+  const headers = 
+  {
+    "accept": "application/json",
+    "Content-Type": "application/x-www-form-urlencoded"
+  }
   const data = 'grant_type=password&username=' + process.env.API_TEST_USERNAME + '&password=' + process.env.API_TEST_PASSWORD;
   const response = await request.post(String(process.env.API_TEST_SPACES_URL), {headers:headers, data:data});
   expect(response.status()).toBe(200);
   expect(response.json()).not.toBeNull();
   const responceData = await response.json();
   expect(responceData.token).not.toBeNull();
-  const response_json = await response.json();
   access_token = responceData.access_token;
 });
 
 test.describe('API', () => {
 
-  test(`@20001 @smoke @api - set Footer.SayingText bussiness settings`, async function ({request}) {
+  test(`@20001 @smoke @api - set Footer.SayingText setting`, async function ({request}) {
     //get
     const busValue = "Nothing will work unless denis runs e2e "
     const authToken = {"authorization": "Bearer " + access_token};
