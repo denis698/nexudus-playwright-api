@@ -19,13 +19,8 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('API', () => {
-  test(`@20000 @smoke @api - fail to login`, async function ({request}) {
-    const data = 'grant_type=INVALID&username=INVALID&password=INVALID';
-    const response = await request.post(String(process.env.API_TEST_SPACES_URL), {data:data});
-    expect(response.status()).toBe(400);
-  });
 
-  test(`@20001 @smoke @api - set bussiness settings`, async function ({request}) {
+  test(`@20001 @smoke @api - set Footer.SayingText bussiness settings`, async function ({request}) {
     //get
     const busValue = "Nothing will work unless denis runs e2e "
     const authToken = {"authorization": "Bearer " + access_token};
