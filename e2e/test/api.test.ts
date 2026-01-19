@@ -16,10 +16,10 @@ test.beforeEach(async ({ request }) => {
   const responceData = await response.json();
   expect(responceData.token).not.toBeNull();
   access_token = responceData.access_token;
+  console.log(access_token);
 });
 
 test.describe('API', () => {
-
   test(`@20001 @smoke @api - set Footer.SayingText setting`, async function ({request}) {
     //get
     const busValue = "Nothing will work unless denis runs e2e "
@@ -27,6 +27,7 @@ test.describe('API', () => {
     const getResponse = await request.get(String(process.env.API_TEST_SPACES_BUS_SETTING_URL + "/" + 1417289149), {headers:authToken});
     const getResponseJson = await getResponse.json();
     expect(getResponseJson.Value).toContain(busValue);
+    console.log(getResponseJson);
     
     //update
     const modifiedValue = busValue  + new Date().toLocaleTimeString();
@@ -48,6 +49,7 @@ test.describe('API', () => {
     expect(checkResponse.json()).not.toBeNull();
     const checkResponseJson = await checkResponse.json();
     expect(checkResponseJson).toHaveProperty("Value", modifiedValue);
+    console.log(checkResponseJson);
   });
 
   });
