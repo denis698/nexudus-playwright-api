@@ -46,6 +46,7 @@ const config: PlaywrightTestConfig = {
   use: {
     video: {
       mode: 'retain-on-failure',
+      //https://help.nexudus.com/docs/system-requirements
       size: { width: 1920, height: 1080 }
     },
     viewport: { width: 1920, height: 1080 },
