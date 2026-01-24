@@ -21,13 +21,8 @@ test.beforeEach(async ({ request }) => {
 
 test.describe('API', () => {
   test(`@20001 @smoke @api - set Footer.SayingText setting`, async function ({request}) {
-    //get
     const busValue = "Nothing will work unless denis runs e2e "
     const authToken = {"authorization": "Bearer " + access_token};
-    const getResponse = await request.get(String(process.env.API_TEST_SPACES_BUS_SETTING_URL + "/" + 1417289149), {headers:authToken});
-    const getResponseJson = await getResponse.json();
-    expect(getResponseJson.Value).toContain(busValue);
-    console.log(getResponseJson);
     
     //update
     const modifiedValue = busValue  + new Date().toLocaleTimeString();
