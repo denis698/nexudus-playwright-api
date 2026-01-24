@@ -20,7 +20,7 @@ test.beforeEach(async ({ request }) => {
 
 test.describe('API', () => {
   test(`@20001 @smoke @api - set Footer.SayingText setting`, async function ({request}) {
-    const busValue = "Nothing will work unless denis runs AT "
+    const busValue = "Nothing will work unless Denis runs AT - "
     const authToken = {"authorization": "Bearer " + access_token};
     
     //update
