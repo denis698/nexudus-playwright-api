@@ -16,12 +16,11 @@ test.beforeEach(async ({ request }) => {
   const responceData = await response.json();
   expect(responceData.token).not.toBeNull();
   access_token = responceData.access_token;
-  console.log(access_token);
 });
 
 test.describe('API', () => {
   test(`@20001 @smoke @api - set Footer.SayingText setting`, async function ({request}) {
-    const busValue = "Nothing will work unless denis runs e2e "
+    const busValue = "Nothing will work unless denis runs AT "
     const authToken = {"authorization": "Bearer " + access_token};
     
     //update
