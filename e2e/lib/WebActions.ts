@@ -372,13 +372,8 @@ export class WebActions {
     await newPage.close();
   }
 
-  async verifyElementContainsText(
-    locator: string,
-    text: string
-  ): Promise<void> {
-    await expect(this.page.locator(locator)).toContainText(text, {
-      timeout: 20000,
-    });
+  async verifyElementContainsText(locator: string,text: string): Promise<void> {
+    await expect(this.page.locator(locator)).toContainText(text, {timeout: 20000});
   }
 
   async verifyJSElementValue(locator: string, text: string): Promise<void> {

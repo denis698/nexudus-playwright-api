@@ -34,9 +34,20 @@ export class MPLoginPage extends MPLoginPageObjects {
     await webActions.clickElementByRole('button', 'Login');
   }
 
+  async enterEmail(userName: string): Promise<void> {  
+    await webActions.enterElementText(MPLoginPageObjects.EMAIL_TEXT_FIELD, userName);
+  }
+
+  async enterPassword(password: string): Promise<void> {  
+    await webActions.enterElementText(MPLoginPageObjects.PASSWORD_TEXT_FIELD, password);
+  }
+
+  async clickOnLogin(): Promise<void> {  
+    await webActions.clickElementByRole('button', 'Login');
+  }
+
   async verifyLoginError(): Promise<void> {
-    await webActions.verifyPageElement(MPLoginPageObjects.SIGNIN_ERROR);
-    await webActions.verifyElementText(MPLoginPageObjects.SIGNIN_ERROR, 'The email or password is incorrect.');
+    await webActions.waitForVisibleElementText('Invalid email/password');
   }
 
   async createAccount(): Promise<void> {

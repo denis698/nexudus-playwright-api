@@ -7,5 +7,4 @@ export class MPLoginPageObjects {
   protected static PORTAL_PASSPORT_TEXT_FIELD = `[id="portalPasswordInput"]`;
   protected static PASSPORT_PROTECTION_MESSAGE = `.password-protection-message`;
   protected static SUBMIT_BUTTON = `text=Submit`;
-  protected static SIGNIN_ERROR = `.alert-danger`;
 }

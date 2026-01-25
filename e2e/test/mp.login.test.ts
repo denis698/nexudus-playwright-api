@@ -6,12 +6,20 @@ test.beforeEach(async ({ mpLoginPage }) => {
   await mpLoginPage.verifyAt();
 });
 
-test.describe('MP Login', () => {
-  test(`@10001 @smoke @mp.login - login to member portal`, async ({mpLoginPage, mpDashboardPage}) => {
+test.describe('Login', () => {
+  test(`@10001 @smoke @mp.login - login`, async ({mpLoginPage, mpDashboardPage}) => {
     await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
     await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
     await mpDashboardPage.verifyAt();
     await mpDashboardPage.verifyUserLoginStatus(userData.name);
+  });
+
+    test(`@10002 @smoke @mp.login - failed login`, async ({mpLoginPage, mpDashboardPage}) => {
+    await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
+    await mpLoginPage.enterEmail("invalid@nexudus.com");
+    await mpLoginPage.enterPassword("INVALID");
+    await mpLoginPage.clickOnLogin();
+    await mpLoginPage.verifyLoginError();
   });
 
 });
