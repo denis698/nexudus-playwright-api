@@ -6,4 +6,6 @@ export class MPDashboardPageObjects {
   protected static MANAGE_BOOKINGS_BUTTON = `#make-booking-button`;
   protected static OUNBOARDING_SECTION = `.onboarding-section`;
   protected static DROPDOWN = `.dropdown`;
+  protected static PROFILE_DROPDOWN = `[aria-labelledby="profileDropdown"]`;
+  
 }

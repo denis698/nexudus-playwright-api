@@ -27,8 +27,8 @@ export class MPDashboardPage extends MPDashboardPageObjects {
 
   async verifyProfileMenu(expectedMenuOption:string): Promise<void> {
     await webActions.clickElementByRole("img", "chevron-down icon");
-    const menuOption = await webActions.getTextFromElementByRole('link', expectedMenuOption);
-    expect(menuOption).toContain(expectedMenuOption);
+    const menuOptions = await webActions.getTextFromElement(MPDashboardPageObjects.PROFILE_DROPDOWN);
+    expect(menuOptions).toContain(expectedMenuOption);
   }
 
 }
