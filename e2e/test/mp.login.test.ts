@@ -14,7 +14,7 @@ test.describe('Login', () => {
     await mpDashboardPage.verifyUserLoginStatus(userData.user_name);
   });
 
-    test(`@10002 @smoke @mp.login - failed login`, async ({mpLoginPage, mpDashboardPage}) => {
+    test(`@10002 @smoke @mp.login - failed login`, async ({mpLoginPage}) => {
     await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
     await mpLoginPage.enterEmail("invalid@nexudus.com");
     await mpLoginPage.enterPassword("INVALID");
