@@ -409,11 +409,7 @@ export class WebActions {
     expect(status, `${errorMessage}`).toBe(true);
   }
 
-  async expectToBeValue(
-    expectedValue: string,
-    actualValue: string,
-    errorMessage: string
-  ): Promise<void> {
+  async expectToBeValue(expectedValue: string,actualValue: string,errorMessage: string): Promise<void> {
     expect(expectedValue.trim(), `${errorMessage}`).toBe(actualValue);
   }
 
@@ -444,4 +440,10 @@ export class WebActions {
   async clickElementByLabelAndByOption(label: string, kind: string): Promise<void> {
     await this.page.getByLabel(label).selectOption(kind);
   }
+
+  async isVisibleByRole(role: any, calendarName: string): Promise<boolean> {
+    
+    return await this.page.getByRole(role, { name: calendarName }).isVisible();
+  }
+
 }

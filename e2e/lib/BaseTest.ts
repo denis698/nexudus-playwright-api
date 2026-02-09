@@ -35,6 +35,8 @@ import { ResourceTypePage } from '@pages/ResourceTypePage';
 import { AddResourceTypePage } from '@pages/AddResourceTypePage';
 import { TimeCreditsPage } from '@pages/TimeCreditsPage';
 import { AddTimeCreditsPage } from '@pages/AddTimeCreditsPage';
+import { MPBookingsMeetingRoomsPage } from '@pages/MPBookingsMeetingRoomsPage';
+
 
 const test = baseTest.extend<{
   loginPage: LoginPage;
@@ -67,12 +69,13 @@ const test = baseTest.extend<{
   financePage: FinancePage;
   invoicesPage: InvoicesPage;
   addInvoicePage: AddInvoicePage;
-  mpLoginPage: MPLoginPage;
-  mpDashboardPage: MPDashboardPage;
   resourceTypePage: ResourceTypePage;
   addResourceTypePage: AddResourceTypePage;
   timeCreditsPage: TimeCreditsPage;
   addTimeCreditsPage: AddTimeCreditsPage;
+  mpLoginPage: MPLoginPage;
+  mpDashboardPage: MPDashboardPage;
+  mPBookingsMeetingRoomsPage: MPBookingsMeetingRoomsPage;
   
 }>({
   loginPage: async ({ page }, use) => {
@@ -182,6 +185,9 @@ const test = baseTest.extend<{
   },
   addTimeCreditsPage: async ({ page }, use) => {
     await use(new AddTimeCreditsPage(page));
+  },
+  mPBookingsMeetingRoomsPage: async ({ page }, use) => {
+    await use(new MPBookingsMeetingRoomsPage(page));
   }
 });
 

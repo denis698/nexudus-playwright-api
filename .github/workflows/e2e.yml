@@ -69,6 +69,7 @@ jobs:
           MP_TEST_LOCATION_1: ${{ secrets.MP_TEST_LOCATION_1 }}
           MP_TEST_ADMIN_USERNAME: ${{ secrets.MP_TEST_ADMIN_USERNAME }}
           MP_TEST_ADMIN_PASSWORD: ${{ secrets.MP_TEST_ADMIN_PASSWORD }}
+          MP_TEST_USER: ${{ secrets.MP_TEST_USER }}
 
         run: npm run test:firefox
         
