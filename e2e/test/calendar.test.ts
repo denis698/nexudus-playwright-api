@@ -36,7 +36,7 @@ test.describe('API', () => {
       case "3":
         name = 'Month'
         break; 
-      case "3":
+      case "4":
         name = 'List'
         break; 
       default:
