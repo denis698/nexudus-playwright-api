@@ -442,8 +442,11 @@ export class WebActions {
   }
 
   async isVisibleByRole(role: any, calendarName: string): Promise<boolean> {
-    
     return await this.page.getByRole(role, { name: calendarName }).isVisible();
+  }
+
+  async isVisibleByText(text:string): Promise<boolean> {
+    return await this.page.getByText(text).isVisible();
   }
 
 }
