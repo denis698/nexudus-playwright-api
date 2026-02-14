@@ -19,56 +19,86 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('API', () => {
-  test.skip(`@20001 @smoke @api - Footer.SayingText`, async function ({request}) {
-    //update
-    const busValue = "Nothing will work unless Denis runs AT - "
+  test(`@FA_04 @smoke @mp.navigation - Footer.SayingText`, async function ({request,mpLoginPage,mpMarketingPage}) {
     const authToken = {"authorization": "Bearer " + access_token};
-    const modifiedValue = busValue  + new Date().toLocaleTimeString();
+    const footerName = "Nothing will work unless Denis runs AT - "  + new Date().toLocaleTimeString();
+    
+    //update
     const successMessage = "was successfully updated.";
     const payload = {
         "Id": 1417289149,
         "BusinessId": 1414940210,
         "Name": "Footer.SayingText",
-        "Value": modifiedValue
+        "Value": footerName
     }
     
     const successResponse = await request.put(String(process.env.API_TEST_SPACES_BUS_SETTINGS_URL), {headers:authToken, data:payload});
     const successResponseJson = await successResponse.json();
     expect(successResponseJson.Message).toContain(successMessage);
 
-    //check
+    //check api
     const checkResponse = await request.get(String(process.env.API_TEST_SPACES_BUS_SETTING_URL + "/" + 1417289149), {headers:authToken});
     expect(checkResponse.status()).toBe(200);
     expect(checkResponse.json()).not.toBeNull();
     const checkResponseJson = await checkResponse.json();
-    expect(checkResponseJson).toHaveProperty("Value", modifiedValue);
+    expect(checkResponseJson).toHaveProperty("Value", footerName);
+
+    //check UI
+    await mpLoginPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL + process.env.MP_TEST_USER);
+    await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
+    await mpMarketingPage.verifyAt();
+    const defaultCalendarView = await mpMarketingPage.isElementVisibleWithName(footerName);
+    expect(defaultCalendarView).toBeTruthy()
+
   });
 
-  test.skip(`@20002 @smoke @api - Calendars.DefaultView`, async function ({request, testDataUtil}) {
-    // Generate a random number between 1 and 4 
-    //1 - day, 2 - week, 3 - month, 4 - list
-    const modifiedCalendarValue = String(testDataUtil.generateRandomNumber(1, 4));  
+  test(`@FA_05 @smoke @mp.navigation - Footer.SayingAuthor`, async function ({request, testDataUtil, mpLoginPage, mpMarketingPage}) {
     const authToken = {"authorization": "Bearer " + access_token};
-    
+    // Generate a random number between 1 and 3 
+    //1 - Denis Gershengoren, 2 - Steven Hobbs, 3 - Olena Maistrenko
+    const authorType = String(testDataUtil.generateRandomNumber(1, 3));  
+
+    let authorName = '' ; 
+    switch (authorType) {
+      case "1":  
+        authorName = 'Denis Gershengoren'
+         break; 
+      case "2":
+        authorName = 'Steven Hobbs'
+        break; 
+      case "3":
+        authorName = 'Olena Maistrenko'
+        break; 
+      default:
+        throw new Error(`Unknown calendar type: ${authorType}`);
+    }
+
     //update
     const successMessage = "was successfully updated.";
     const payload = {
-        "Id": 1417289008,
+        "Id": 1417289150,
         "BusinessId": 1414940210,
-        "Name": "Calendars.DefaultView",
-        "Value": modifiedCalendarValue
+        "Name": "Footer.SayingAuthor",
+        "Value": authorName
     }
     
     const successResponse = await request.put(String(process.env.API_TEST_SPACES_BUS_SETTINGS_URL), {headers:authToken, data:payload});
     const successResponseJson = await successResponse.json();
     expect(successResponseJson.Message).toContain(successMessage);
 
-    //check
-    const checkResponse = await request.get(String(process.env.API_TEST_SPACES_BUS_SETTING_URL + "/" + 1417289008), {headers:authToken});
+    //check api
+    const checkResponse = await request.get(String(process.env.API_TEST_SPACES_BUS_SETTING_URL + "/" + 1417289150), {headers:authToken});
     expect(checkResponse.status()).toBe(200);
     expect(checkResponse.json()).not.toBeNull();
     const checkResponseJson = await checkResponse.json();
-    expect(checkResponseJson).toHaveProperty("Value", modifiedCalendarValue);
+    expect(checkResponseJson).toHaveProperty("Value", authorName);
+
+    //check UI
+    await mpLoginPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL + process.env.MP_TEST_USER);
+    await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
+    await mpMarketingPage.verifyAt();
+    const defaultCalendarView = await mpMarketingPage.isElementVisibleWithName(authorName);
+    expect(defaultCalendarView).toBeTruthy()
   });
-  
+    
 });
