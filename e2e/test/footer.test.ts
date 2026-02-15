@@ -73,6 +73,8 @@ test.describe('API', () => {
         throw new Error(`Unknown calendar type: ${authorType}`);
     }
 
+    authorName = authorName + ' - ' + new Date().toLocaleTimeString();
+
     //update
     const successMessage = "was successfully updated.";
     const payload = {
