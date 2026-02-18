@@ -18,8 +18,8 @@ test.beforeEach(async ({ request }) => {
   access_token = responceData.access_token;
 });
 
-test.describe('API', () => {
-  test(`@NFA_04 @smoke @mp.navigation - Footer.SayingText`, async function ({request,mpLoginPage, mpMarketingPage, mpCommonPage}) {
+test.describe('Footer', () => {
+  test(`@NFA_04 @smoke @mp.footer - Footer.SayingText`, async function ({request,mpLoginPage, mpMarketingPage, mpCommonPage}) {
     const authToken = {"authorization": "Bearer " + access_token};
     const footerName = "Nothing will work unless Denis runs AT - "  + new Date().toLocaleTimeString();
     
@@ -52,7 +52,7 @@ test.describe('API', () => {
 
   });
 
-  test(`@NFA_05 @smoke @mp.navigation - Footer.SayingAuthor`, async function ({request, testDataUtil, mpLoginPage, mpMarketingPage, mpCommonPage}) {
+  test(`@NFA_05 @smoke @mp.footer - Footer.SayingAuthor`, async function ({request, testDataUtil, mpLoginPage, mpMarketingPage, mpCommonPage}) {
     const authToken = {"authorization": "Bearer " + access_token};
     // Generate a random number between 1 and 3 
     //1 - Denis Gershengoren, 2 - Steven Hobbs, 3 - Olena Maistrenko
