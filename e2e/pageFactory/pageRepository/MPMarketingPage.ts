@@ -25,7 +25,18 @@ export class MPMarketingPage extends MPMarketingPageObjects {
     return await webActions.isVisibleByText(name);
   }
 
+  async isElementVisibleByRole(name:string): Promise<boolean> {
+    return await webActions.isVisibleByRole('button', name)
+  }
+
+
   async isElementVisible(selector:string): Promise<boolean> {
     return await webActions.isVisible(selector);
   }
+  
+  async setLanguage(name:string): Promise<void> {
+    await webActions.clickElementByRole('button', 'Language');
+    await webActions.clickElementByRole('button', name);
+  }
+
 }

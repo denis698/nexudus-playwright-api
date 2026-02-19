@@ -19,7 +19,36 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('Footer', () => {
-  test(`@NFA_04 @smoke @mp.footer - Footer.SayingText`, async function ({request,mpLoginPage, mpMarketingPage, mpCommonPage}) {
+  test(`@NFA_03 @smoke @mp.footer - language`, async function ({mpLoginPage, mpMarketingPage, testDataUtil}) {
+    // Generate a random number between 1 and 4 
+    //1 - Spanish, 2 - English (US), 3 - English (int)
+    const languageType = String(testDataUtil.generateRandomNumber(3, 3));  
+    
+    let name = '' ; 
+    switch (languageType) {
+      case "1":  
+        name = 'Spanish'
+         break; 
+      case "2":
+        name = 'English (US)'
+        break; 
+      case "3":
+        name = 'English (Int.)'
+        break; 
+      default:
+        throw new Error(`Unknown language type: ${languageType}`);
+    }
+    
+    //check UI
+    await mpLoginPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL + process.env.MP_TEST_USER);
+    await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
+    await mpMarketingPage.verifyAt();
+    await mpMarketingPage.setLanguage(name);
+    const languageNameVisible = await mpMarketingPage.isElementVisibleByRole(name);
+    expect(languageNameVisible).toBeTruthy()
+  });
+
+  test(`@NFA_04 @smoke @mp.footer - Footer.SayingText`, async function ({request,mpLoginPage, mpMarketingPage}) {
     const authToken = {"authorization": "Bearer " + access_token};
     const footerName = "Nothing will work unless Denis runs AT - "  + new Date().toLocaleTimeString();
     
@@ -47,7 +76,7 @@ test.describe('Footer', () => {
     await mpLoginPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL + process.env.MP_TEST_USER);
     await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
     await mpMarketingPage.verifyAt();
-    const footerNameVisible = await mpCommonPage.isElementVisibleWithName(footerName);
+    const footerNameVisible = await mpMarketingPage.isElementVisibleWithName(footerName);
     expect(footerNameVisible).toBeTruthy()
 
   });
