@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import test from '@lib/BaseTest';
+import userData from "./testdata/login/mp/user.json"
 
 let access_token: string;
 
@@ -19,7 +20,7 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('Footer', () => {
-    test(`@NFA_01 @smoke @mp.footer - Footer.Links`, async function ({ mpLoginPage, mpMarketingPage }) {
+  test(`@NFA_01 @smoke @mp.footer - Footer.Links`, async function ({ mpLoginPage, mpMarketingPage }) {
     const footerHeaders  = ["Contact", "Services", "Help"];   
     const footerCopyright  = "© Denis Gershengoren [London Office]"; 
     const footerLiks  = ["Contact us", "Book a tour", "Join a plan",
@@ -44,6 +45,24 @@ test.describe('Footer', () => {
       expect(isFooterLinkVisible).toBeTruthy();
     }
 
+  });
+
+  test(`@NFA_02 @smoke @mp.footer - Footer.Login`, async function ({ mpLoginPage, mpMarketingPage, mpDashboardPage }) {
+    const footerCopyright  = "© Denis Gershengoren [London Office]"; 
+    
+    await mpLoginPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL + process.env.MP_TEST_USER);
+    await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
+    await mpDashboardPage.accessLoginPage();
+    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
+    await mpDashboardPage.verifyAt();
+    const userLoginName = await mpDashboardPage.getUserLoginStatus(userData.user_name);
+    expect(userLoginName).toContain(userData.user_name);
+  
+    const isFooterCopyrightVisible = await mpMarketingPage.isElementVisibleWithName(footerCopyright);
+    expect(isFooterCopyrightVisible).toBeTruthy();
+
+    const languageNameVisible = await mpMarketingPage.isElementVisibleByRole('button', 'Language');
+    expect(languageNameVisible).toBeTruthy()
   });
   
   test(`@NFA_03 @smoke @mp.footer - Footer.Language`, async function ({mpLoginPage, mpMarketingPage, testDataUtil}) {

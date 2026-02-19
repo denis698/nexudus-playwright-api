@@ -29,4 +29,8 @@ export class MPDashboardPage extends MPDashboardPageObjects {
     return await webActions.getTextFromElement(MPDashboardPageObjects.PROFILE_DROPDOWN);
   }
 
+  async accessLoginPage(): Promise<void> {
+    await webActions.clickElementByRole("button", "Sign in");
+  }
+
 }
