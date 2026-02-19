@@ -446,10 +446,6 @@ export class WebActions {
   }
 
   async isVisible(selector:string): Promise<boolean> {
-    // await this.page.waitForSelector(locator, { state: `visible`, timeout: 30000 })
-    //       .catch(() => { 
-    //     throw new Error(`${errorMessage}`);
-    // });
     return await this.page.locator(selector).isVisible();
   }
 
