@@ -19,10 +19,10 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('Footer', () => {
-  test(`@NFA_03 @smoke @mp.footer - language`, async function ({mpLoginPage, mpMarketingPage, testDataUtil}) {
+  test(`@NFA_03 @smoke @mp.footer - Footer.Language`, async function ({mpLoginPage, mpMarketingPage, testDataUtil}) {
     // Generate a random number between 1 and 4 
     //1 - Spanish, 2 - English (US), 3 - English (int)
-    const languageType = String(testDataUtil.generateRandomNumber(3, 3));  
+    const languageType = String(testDataUtil.generateRandomNumber(1, 3));  
     
     let name = '' ; 
     switch (languageType) {
