@@ -45,9 +45,6 @@ test.describe('Footer', () => {
     }
 
   });
-
-  // await page.getByRole('checkbox', { name: 'Dark mode' }).uncheck();
-  // await page.getByRole('checkbox', { name: 'Dark mode' }).check();
   
   test(`@NFA_03 @smoke @mp.footer - Footer.Language`, async function ({mpLoginPage, mpMarketingPage, testDataUtil}) {
     // Generate a random number between 1 and 4 
