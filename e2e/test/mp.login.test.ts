@@ -15,7 +15,7 @@ test.describe('Login', () => {
     expect(userLoginName).toContain(userData.user_name);
   });
 
-    test(`@SA_01b @smoke @mp.login - failed login`, async ({mpLoginPage}) => {
+  test(`@SA_01b @smoke @mp.login - failed login`, async ({mpLoginPage}) => {
     const expectedLoginError = 'Invalid email/password';  
     await mpLoginPage.enterEmail("invalid@nexudus.com");
     await mpLoginPage.enterPassword("INVALID");

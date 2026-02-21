@@ -9,7 +9,7 @@ test.beforeEach(async ({ mpLoginPage }) => {
 });
 
 test.describe('Navigation->User Profile Menu', () => {
-  test(`@NPA_002a @smoke @mp.navigation - admin should be able to access Profile Menu->Page editor->Admin->Switch account`, async ({mpLoginPage,mpDashboardPage}) => {
+  test(`@NPA_002a @smoke @mp.navigation - admin access Profile Menu->Page editor->Admin->Switch account`, async ({mpLoginPage,mpDashboardPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_ADMIN_USERNAME), String(process.env.MP_TEST_ADMIN_PASSWORD));
     await mpDashboardPage.verifyAt();
     const menuOptions = await mpDashboardPage.getProfileMenu();
@@ -18,7 +18,7 @@ test.describe('Navigation->User Profile Menu', () => {
     expect(menuOptions).toContain("Switch account");
   });
 
-  test(`@NPA_002b @smoke @mp.navigation - user should be able to access Profile Menu`, async ({mpLoginPage,mpDashboardPage}) => {
+  test(`@NPA_002b @smoke @mp.navigation - user access Profile Menu`, async ({mpLoginPage,mpDashboardPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
     await mpDashboardPage.verifyAt();
     const menuOptions = await mpDashboardPage.getProfileMenu();
