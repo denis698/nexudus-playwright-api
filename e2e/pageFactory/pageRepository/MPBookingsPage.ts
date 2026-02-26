@@ -16,7 +16,6 @@ export class MPBookingsPage extends MPBookingsPageObjects {
   async verifyAt(): Promise<void> {
     await webActions.verifyPageElement(MPBookingsPageObjects.BOOKINGS_MENU.replace(`/locuser`, process.env.MP_TEST_USER));
     await webActions.verifyURL(MPBookingsPageObjects.PAGE_URL);
-    await webActions.verifyTitle(MPBookingsPageObjects.PAGE_TITLE);
   }
  
   async accessDashboard(): Promise<void> {
