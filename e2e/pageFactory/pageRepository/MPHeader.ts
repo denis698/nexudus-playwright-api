@@ -40,4 +40,20 @@ export class MPHeader extends MPHeaderObjects {
     await webActions.clickElementByRole("img", "chevron-down icon");
     await webActions.clickElementByExactRole('link', 'My plan');    
   }
+
+  async accessBuilding(): Promise<void> {
+    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByExactRole('link', 'Building arrow-right icon');    
+    await webActions.clickElementByExactRole('link', 'Availability');  
+  }
+
+  async accessAccount(): Promise<void> {
+    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByExactRole('link', 'Account');    
+  }
+
+  async accessSettings(): Promise<void> {
+    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByExactRole('link', 'Settings');    
+  }
 }

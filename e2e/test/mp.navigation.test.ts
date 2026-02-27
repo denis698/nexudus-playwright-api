@@ -36,7 +36,8 @@ test.describe('Navigation->User Profile Menu', () => {
     mpMarketingPage,
     mpInvoicesPage,
     mpBookingsPage,
-    mpMyPlansPage, }) => {
+    mpMyPlansPage,
+    mpBuildingPage, }) => {
     
     //NPA_03
     await mpHeader.accessMarketing();
@@ -65,5 +66,16 @@ test.describe('Navigation->User Profile Menu', () => {
 
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
+
+    //NPA_09
+    await mpHeader.accessBuilding();
+    await mpBuildingPage.verifyAtAva();
+
+    await mpBuildingPage.accessEnvironment();
+    await mpBuildingPage.verifyAtEnv();
+
+    await mpHeader.accessDashboard();
+    await mpDashboardPage.verifyAt();
+    
   });
 });

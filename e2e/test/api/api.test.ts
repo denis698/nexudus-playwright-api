@@ -19,7 +19,7 @@ test.beforeEach(async ({ request }) => {
 });
 
 test.describe('API', () => {
-  test.skip(`@20001 @smoke @api - Footer.SayingText`, async function ({request}) {
+  test(`@20001 @smoke @api - Footer.SayingText`, async function ({request}) {
     //update
     const busValue = "Nothing will work unless Denis runs AT - "
     const authToken = {"authorization": "Bearer " + access_token};
@@ -44,7 +44,7 @@ test.describe('API', () => {
     expect(checkResponseJson).toHaveProperty("Value", modifiedValue);
   });
 
-  test.skip(`@20002 @smoke @api - Calendars.DefaultView`, async function ({request, testDataUtil}) {
+  test(`@20002 @smoke @api - Calendars.DefaultView`, async function ({request, testDataUtil}) {
     // Generate a random number between 1 and 4 
     //1 - day, 2 - week, 3 - month, 4 - list
     const modifiedCalendarValue = String(testDataUtil.generateRandomNumber(1, 4));  
