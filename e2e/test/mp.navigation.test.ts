@@ -2,15 +2,19 @@ import test from '@lib/BaseTest';
 import menuData from './testdata/mp/navigation/profile_menu.json';
 import { expect } from '@playwright/test';
 
-test.beforeEach(async ({ mpLoginPage,mpDashboardPage }) => {
+test.beforeEach(async ({ mpLoginPage }) => {
   await mpLoginPage.navigateTo(process.env.MP_TEST_LOGIN_PAGE_URL);
   await mpLoginPage.login(String(process.env.MP_LOCATION_PASSWORD));
-  await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
-  await mpDashboardPage.verifyAt();
 });
 
-test.describe('Navigation->User Profile Menu', () => {
-  test.skip(`@NPA_002a @smoke @mp.nav - admin access user profile menu->page editor->admin->switch account`, async ({
+test.describe('navigation->user-profile-menu', () => {
+  test(`@NPA_01 @smoke @mp.nav - access member portal`, async ({ mpMarketingPage }) => {
+    await mpMarketingPage.navigateTo(process.env.MP_TEST_MARKETING_PAGE_URL);
+    await mpMarketingPage.verifyAt();
+    await mpMarketingPage.isElementVisibleWithName('Sign in');
+  });
+  
+  test(`@NPA_002a @smoke @mp.nav - admin access user-profile-menu->page editor->admin->switch account`, async ({
     mpLoginPage,
     mpDashboardPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_ADMIN_USERNAME), String(process.env.MP_TEST_ADMIN_PASSWORD));
@@ -21,8 +25,11 @@ test.describe('Navigation->User Profile Menu', () => {
     expect(menuOptions).toContain("Switch account");
   });
 
-  test(`@NPA_002 @smoke @mp.nav - access user profile menu options`, async ({
-    mpDashboardPage}) => {
+  test(`@NPA_002b @smoke @mp.nav - access user-profile-menu options`, async ({
+    mpDashboardPage,
+    mpLoginPage}) => {
+    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
+    await mpDashboardPage.verifyAt();
     const menuOptions = await mpDashboardPage.getProfileMenu();
     expect(menuOptions).toContain(menuData.dashboard_menu);
     expect(menuOptions).not.toContain("Switch account");
@@ -30,8 +37,9 @@ test.describe('Navigation->User Profile Menu', () => {
     expect(menuOptions).not.toContain("Switch account");
   });
 
-  test(`@NPA_003 & @NPA_012 @smoke @mp.nav - select user profile menu options`, async ({
+  test(`@NPA_003 to 012 @smoke @mp.nav - access user-profile-menu options`, async ({
     mpHeader,
+    mpLoginPage,
     mpDashboardPage,
     mpMarketingPage,
     mpInvoicesPage,
@@ -39,6 +47,8 @@ test.describe('Navigation->User Profile Menu', () => {
     mpMyPlansPage,
     mpBuildingPage,
     mpAccountPage, }) => {
+    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
+    await mpDashboardPage.verifyAt();  
     
     //NPA_03
     await mpHeader.accessMarketing();
