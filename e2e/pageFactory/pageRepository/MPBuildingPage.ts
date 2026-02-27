@@ -18,7 +18,7 @@ export class MPBuildingPage extends MPBuildingPageObjects {
     await webActions.verifyURL(MPBuildingPageObjects.AVA_PAGE_URL);
   }
 
-    async verifyAtEnv(): Promise<void> {
+  async verifyAtEnv(): Promise<void> {
     await webActions.verifyPageElement(MPBuildingPageObjects.ENVIRONMENT_MENU.replace(`/locuser`, process.env.MP_TEST_USER));
     await webActions.verifyURL(MPBuildingPageObjects.ENV_PAGE_URL);
   }
