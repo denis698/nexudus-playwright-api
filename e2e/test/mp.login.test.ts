@@ -1,6 +1,7 @@
 import test from '@lib/BaseTest';
 import userData from "./testdata/login/mp/user.json"
 import { expect } from '@playwright/test';
+import { MPMarketingPage } from '@pages/MPMarketingPage';
 
 test.beforeEach(async ({ mpLoginPage }) => {
   await mpLoginPage.navigateTo(process.env.MP_TEST_LOGIN_PAGE_URL);
@@ -22,6 +23,14 @@ test.describe('Login', () => {
     await mpLoginPage.clickOnLogin();
     const loginError = await mpLoginPage.getLoginError();
     expect(loginError).toContain(expectedLoginError);
+  });
+
+  test(`@SA_01c @smoke @mp.login - logout`, async ({mpLoginPage, mpDashboardPage, mpHeader, mpMarketingPage}) => {
+    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
+    await mpDashboardPage.verifyAt();
+    await mpHeader.logout();
+    await mpMarketingPage.verifyAt();
+    await mpMarketingPage.isElementVisibleWithName('Sign in');
   });
 
 });

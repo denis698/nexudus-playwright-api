@@ -23,7 +23,8 @@ export class MPCreateAccountDialog extends MPCreateAccountDialogObjects {
     await webActions.enterTextByRole('textbox', 'Full name*', fullname);
     await webActions.clickElementByRole('textbox', 'Email*');
     await webActions.enterTextByRole('textbox', 'Email*', email);
-    await webActions.clickElementByLabelAndByOption('I\'m signing up as a*', type);
+    await webActions.clickElementByRole('button', 'Select your type');
+    await webActions.clickElementByRole('option', type);
     await webActions.clickElementByRole('button', 'Create account and continue');
   }
 

@@ -22,38 +22,43 @@ export class MPHeader extends MPHeaderObjects {
   }
   
   async accessDashboard(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('link', 'Dashboard');    
   }
 
   async accessInvoices(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('link', 'Invoices');    
   }
   
   async accessBookings(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'Bookings');    
   }
   
   async accessMyPlans(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'My plan');    
   }
 
   async accessBuilding(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'Building arrow-right icon');    
     await webActions.clickElementByExactRole('link', 'Availability');  
   }
 
   async accessAccount(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'Account');    
   }
 
   async accessSettings(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'Settings');    
+  }
+
+  async logout(): Promise<void> {
+    await webActions.clickElementByRole("button", "avatar");
+    await webActions.clickElementByRole('button', 'Sign out');    
   }
 }

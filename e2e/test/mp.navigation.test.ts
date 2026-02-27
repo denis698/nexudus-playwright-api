@@ -100,6 +100,17 @@ test.describe('Navigation->User Profile Menu', () => {
     await mpAccountPage.verifyAtSet();
 
     await mpHeader.accessDashboard();
-    await mpDashboardPage.verifyAt();    
+    await mpDashboardPage.verifyAt();   
+    
+    //NPA_11
+    //await mpHeader.accessSettings();
+    //await mpSettingsPage.verifyAt();
+
+    //await mpHeader.accessDashboard();
+    //await mpDashboardPage.verifyAt();
+
+    // 🔴NPA_007: Should be able to access User Profile Menu->Help & support  
+    // 🔴NPA_008: Should be able to access User Profile Menu->My activity  
+    // 🔴NPA_012: Should be able to access User Profile Menu->Sign out  
   });
 });

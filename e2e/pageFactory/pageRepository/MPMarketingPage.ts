@@ -47,7 +47,7 @@ export class MPMarketingPage extends MPMarketingPageObjects {
   }
 
   async accessDashboard(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('link', 'Dashboard');    
   }
 

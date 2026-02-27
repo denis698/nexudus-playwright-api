@@ -20,7 +20,7 @@ export class MPInvoicesPage extends MPInvoicesPageObjects {
   }
  
   async accessDashboard(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('link', 'Dashboard');    
   }
 }

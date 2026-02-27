@@ -20,12 +20,12 @@ export class MPDashboardPage extends MPDashboardPageObjects {
   }
 
   async getUserLoginStatus(userName:string): Promise<string> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     return await webActions.getTextFromElementByRole('link', userName);
   }
 
   async getProfileMenu(): Promise<string> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     return await webActions.getTextFromElement(MPDashboardPageObjects.PROFILE_DROPDOWN);
   }
 
@@ -38,17 +38,17 @@ export class MPDashboardPage extends MPDashboardPageObjects {
   }
 
   async accessInvoices(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('link', 'Invoices');    
   }
 
   async accessBookings(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'Bookings');    
   }
 
   async accessMyPlans(): Promise<void> {
-    await webActions.clickElementByRole("img", "chevron-down icon");
+    await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByExactRole('link', 'My plan');    
   }
 
