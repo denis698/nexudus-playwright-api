@@ -9,14 +9,14 @@ test.beforeEach(async ({ mpLoginPage }) => {
 });
 
 test.describe('Login', () => {
-  test(`@SA_01a @smoke @mp.login - login`, async ({mpLoginPage, mpDashboardPage}) => {
+  test(`@SA_01 @smoke @mp.login - login`, async ({mpLoginPage, mpDashboardPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
     await mpDashboardPage.verifyAt();
     const userLoginName = await mpDashboardPage.getUserLoginStatus(userData.user_name);
     expect(userLoginName).toContain(userData.user_name);
   });
 
-  test(`@SA_01b @smoke @mp.login - failed login`, async ({mpLoginPage}) => {
+  test(`@SA_01 @smoke @mp.login - failed login`, async ({mpLoginPage}) => {
     const expectedLoginError = 'Invalid email/password';  
     await mpLoginPage.enterEmail("invalid@nexudus.com");
     await mpLoginPage.enterPassword("INVALID");
@@ -24,13 +24,5 @@ test.describe('Login', () => {
     const loginError = await mpLoginPage.getLoginError();
     expect(loginError).toContain(expectedLoginError);
   });
-
-  test(`@SA_01c @smoke @mp.login - logout`, async ({mpLoginPage, mpDashboardPage, mpHeader, mpMarketingPage}) => {
-    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
-    await mpDashboardPage.verifyAt();
-    await mpHeader.logout();
-    await mpMarketingPage.verifyAt();
-    await mpMarketingPage.isElementVisibleWithName('Sign in');
-  });
-
+  
 });

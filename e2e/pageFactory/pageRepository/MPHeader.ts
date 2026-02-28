@@ -57,6 +57,18 @@ export class MPHeader extends MPHeaderObjects {
     await webActions.clickElementByExactRole('link', 'Settings');    
   }
 
+  async accessFAQs(): Promise<void> {
+    await webActions.clickElementByRole("button", "avatar");
+    await webActions.clickElementByExactRole('link', 'Help & support arrow-right icon');
+    await webActions.clickElementByExactRole('link', 'FAQs');    
+  }
+
+  async accessHelpSupport(): Promise<void> {
+    await webActions.clickElementByRole("button", "avatar");
+    await webActions.clickElementByExactRole('link', 'Help & support arrow-right icon');
+    await webActions.clickElementByExactRole('link', 'Help desk');    
+  }
+
   async logout(): Promise<void> {
     await webActions.clickElementByRole("button", "avatar");
     await webActions.clickElementByRole('button', 'Sign out');    

@@ -14,7 +14,7 @@ test.describe('navigation->user-profile-menu', () => {
     await mpMarketingPage.isElementVisibleWithName('Sign in');
   });
   
-  test(`@NPA_02a @smoke @mp.nav - admin access user-profile-menu->page editor->admin->switch account`, async ({
+  test(`@NPA_02 @smoke @mp.nav - admin access user-profile-menu->page editor->admin->switch account`, async ({
     mpLoginPage,
     mpDashboardPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_ADMIN_USERNAME), String(process.env.MP_TEST_ADMIN_PASSWORD));
@@ -25,7 +25,7 @@ test.describe('navigation->user-profile-menu', () => {
     expect(menuOptions).toContain("Switch account");
   });
 
-  test(`@NPA_02b @smoke @mp.nav - access user-profile-menu options`, async ({
+  test(`@NPA_02 @smoke @mp.nav - access user-profile-menu options`, async ({
     mpDashboardPage,
     mpLoginPage}) => {
     await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
@@ -37,7 +37,7 @@ test.describe('navigation->user-profile-menu', () => {
     expect(menuOptions).not.toContain("Switch account");
   });
 
-  test(`@NPA_03 to 12 @smoke @mp.nav - access user-profile-menu options`, async ({
+  test(`@NPA_03 to 11 @smoke @mp.nav - access user-profile-menu options`, async ({
     mpHeader,
     mpLoginPage,
     mpDashboardPage,
@@ -45,9 +45,11 @@ test.describe('navigation->user-profile-menu', () => {
     mpInvoicesPage,
     mpBookingsPage,
     mpMyPlansPage,
+    mpHelpSupportPage,
     mpBuildingPage,
     mpAccountPage,
     mpSettingsPage, }) => {
+    
     await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
     await mpDashboardPage.verifyAt();  
     
@@ -75,6 +77,37 @@ test.describe('navigation->user-profile-menu', () => {
     //NPA_06
     await mpHeader.accessMyPlans();
     await mpMyPlansPage.verifyAt();
+
+    await mpHeader.accessDashboard();
+    await mpDashboardPage.verifyAt();
+
+    //NPA_07 
+    await mpHeader.accessFAQs();
+    await mpHelpSupportPage.verifyAtFAQs();
+    await mpHelpSupportPage.accessHelpDesk();
+    await mpHelpSupportPage.verifyAtHelp();
+
+    await mpHeader.accessDashboard();
+    await mpDashboardPage.verifyAt();
+
+    //NPA_08  
+    await mpHeader.accessInvoices();
+    await mpInvoicesPage.verifyAt();
+
+    await mpInvoicesPage.accessBookings();
+    await mpInvoicesPage.verifyAtBook();
+
+    await mpInvoicesPage.accessVisitors();
+    await mpInvoicesPage.verifyAtVis();
+
+    await mpInvoicesPage.accessDeliveries();
+    await mpInvoicesPage.verifyAtDel();
+
+    await mpInvoicesPage.accessEvents();
+    await mpInvoicesPage.verifyAtEve();
+
+    await mpInvoicesPage.accessCourses();
+    await mpInvoicesPage.verifyAtCou();
 
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
@@ -119,9 +152,14 @@ test.describe('navigation->user-profile-menu', () => {
 
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
-
-    // 🔴NPA_007: Should be able to access User Profile Menu->Help & support  
-    // 🔴NPA_008: Should be able to access User Profile Menu->My activity  
-    // 🔴NPA_012: Should be able to access User Profile Menu->Sign out  
   });
+
+  test(`@NPA_12 @smoke @mp.login - sign out`, async ({mpLoginPage, mpDashboardPage, mpHeader, mpMarketingPage}) => {
+    await mpLoginPage.loginAs(String(process.env.MP_TEST_USERNAME), String(process.env.MP_TEST_PASSWORD));
+    await mpDashboardPage.verifyAt();
+    await mpHeader.logout();
+    await mpMarketingPage.verifyAt();
+    await mpMarketingPage.isElementVisibleWithName('Sign in');
+  });
+
 });
