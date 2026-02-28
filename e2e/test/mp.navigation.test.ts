@@ -56,28 +56,24 @@ test.describe('navigation->user-profile-menu', () => {
     //NPA_03
     await mpHeader.accessMarketing();
     await mpMarketingPage.verifyAt();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
     
     //NPA_04
     await mpHeader.accessInvoices();
     await mpInvoicesPage.verifyAt();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
     //NPA_05
     await mpHeader.accessBookings();
     await mpBookingsPage.verifyAt();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
     //NPA_06
     await mpHeader.accessMyPlans();
     await mpMyPlansPage.verifyAt();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
@@ -86,29 +82,22 @@ test.describe('navigation->user-profile-menu', () => {
     await mpHelpSupportPage.verifyAtFAQs();
     await mpHelpSupportPage.accessHelpDesk();
     await mpHelpSupportPage.verifyAtHelp();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
     //NPA_08  
     await mpHeader.accessInvoices();
     await mpInvoicesPage.verifyAt();
-
     await mpInvoicesPage.accessBookings();
     await mpInvoicesPage.verifyAtBook();
-
     await mpInvoicesPage.accessVisitors();
     await mpInvoicesPage.verifyAtVis();
-
     await mpInvoicesPage.accessDeliveries();
     await mpInvoicesPage.verifyAtDel();
-
     await mpInvoicesPage.accessEvents();
     await mpInvoicesPage.verifyAtEve();
-
     await mpInvoicesPage.accessCourses();
     await mpInvoicesPage.verifyAtCou();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
@@ -117,39 +106,30 @@ test.describe('navigation->user-profile-menu', () => {
     await mpBuildingPage.verifyAtAva();
     await mpBuildingPage.accessEnvironment();
     await mpBuildingPage.verifyAtEnv();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
 
     //NPA_10
     await mpHeader.accessAccount();
     await mpAccountPage.verifyAtAcc();
-    
     await mpAccountPage.accessBillingDetails();
     await mpAccountPage.verifyAtBdt();
-
     await mpAccountPage.accessPlanBenefits();
     await mpAccountPage.verifyAtPbn();
-
     await mpAccountPage.accessDirectoryProfile();
     await mpAccountPage.verifyAtDPf();
-
     await mpAccountPage.accessIdentityChecks();
     await mpAccountPage.verifyAtId();
-
     await mpAccountPage.accessFiles();
     await mpAccountPage.verifyAtFil();
-
     await mpAccountPage.accessSettings();
     await mpAccountPage.verifyAtSet();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();   
     
     //NPA_11
     await mpHeader.accessSettings();
     await mpSettingsPage.verifyAt();
-
     await mpHeader.accessDashboard();
     await mpDashboardPage.verifyAt();
   });
