@@ -5,4 +5,6 @@ export class MPLoginPageObjects {
   protected static PASSWORD_TEXT_FIELD = `input[type="password"]`;
   protected static SIGN_IN_BUTTON = `text=Sign in`;
   protected static ERROR_POPUP = `[role="alert"]`;
+  protected static PASSWORD_ERROR = `.invalid-feedback`;
+  protected static EMAIL_ERROR = `.invalid-feedback`;
 }

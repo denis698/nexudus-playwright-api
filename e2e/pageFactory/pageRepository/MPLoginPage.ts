@@ -50,6 +50,14 @@ export class MPLoginPage extends MPLoginPageObjects {
     return await webActions.getTextFromElement(MPLoginPageObjects.ERROR_POPUP);
   }
 
+  async getLoginPasswordError(): Promise<string> {
+    return await webActions.getTextFromElement(MPLoginPageObjects.PASSWORD_ERROR);
+  }
+
+  async getLoginEmailError(): Promise<string> {
+    return await webActions.getTextFromElement(MPLoginPageObjects.EMAIL_ERROR);
+  }
+
   async accessCreateAccountDialog(): Promise<void> {
     await webActions.clickElementByRole('link', 'Create an account');
   }

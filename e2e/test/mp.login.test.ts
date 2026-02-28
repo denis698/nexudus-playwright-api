@@ -24,5 +24,21 @@ test.describe('Login', () => {
     const loginError = await mpLoginPage.getLoginError();
     expect(loginError).toContain(expectedLoginError);
   });
+
+  test(`@SA_01 @smoke @mp.login - no email`, async ({mpLoginPage}) => {
+    const expectedLoginError = 'Please enter your email';  
+    await mpLoginPage.enterPassword("SOME_PASSWORD");
+    await mpLoginPage.clickOnLogin();
+    const loginError = await mpLoginPage.getLoginEmailError();
+    expect(loginError).toContain(expectedLoginError);
+  });
+
+  test(`@SA_01 @smoke @mp.login - no password`, async ({mpLoginPage}) => {
+    const expectedLoginError = 'Please enter your password';  
+    await mpLoginPage.enterEmail("some.email@nexudus.com");
+    await mpLoginPage.clickOnLogin();
+    const loginError = await mpLoginPage.getLoginPasswordError();
+    expect(loginError).toContain(expectedLoginError);
+  });
   
 });
