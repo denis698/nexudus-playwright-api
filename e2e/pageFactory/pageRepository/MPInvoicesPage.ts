@@ -24,23 +24,23 @@ export class MPInvoicesPage extends MPInvoicesPageObjects {
   }
 
   async accessBookings(): Promise<void> {
-    await webActions.clickElementByRole('link', 'Bookings');    
+    await webActions.clickElementByFirstRole('link', 'Bookings');    
   }
 
   async accessVisitors(): Promise<void> {
-    await webActions.clickElementByRole('link', 'Visitors');    
+    await webActions.clickElementByFirstRole('link', 'Visitors');    
   }
 
   async accessDeliveries(): Promise<void> {
-    await webActions.clickElementByRole('link', 'Deliveries');    
+    await webActions.clickElementByFirstRole('link', 'Deliveries');    
   }
 
   async accessEvents(): Promise<void> {
-    await webActions.clickElementByRole('link', 'Events');    
+    await webActions.clickElementByFirstRole('link', 'Events');    
   }
 
   async accessCourses(): Promise<void> {
-    await webActions.clickElementByRole('link', 'Courses');    
+    await webActions.clickElementByFirstRole('link', 'Courses');    
   }
 
   async verifyAtBook(): Promise<void> {
