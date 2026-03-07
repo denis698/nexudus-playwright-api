@@ -38,7 +38,7 @@ export class MPHeader extends MPHeaderObjects {
   async accessMyActivityInvoices(): Promise<void> {
     await this.accessProfileMenu();
     await webActions.clickElementByExactRole('link', 'My activity arrow-right icon');   
-    await webActions.clickElementByFirstRole('link', 'Invoices');
+    await webActions.clickElementByNthRole('link', 'Invoices');
   }
   
   async accessBookings(): Promise<void> {
