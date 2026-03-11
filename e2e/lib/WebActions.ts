@@ -437,8 +437,12 @@ export class WebActions {
     await this.page.getByLabel(label).selectOption(kind);
   }
 
-  async isVisibleByRole(role: any, calendarName: string): Promise<boolean> {
-    return await this.page.getByRole(role, { name: calendarName }).isVisible();
+    async isVisibleByFirstRole(role:any, name:string): Promise<boolean> {
+    return await this.page.getByRole(role, {name:name}).first().isVisible();
+  }
+
+  async isVisibleByRole(role: any, name: string): Promise<boolean> {
+    return await this.page.getByRole(role, { name: name }).isVisible();
   }
 
   async isVisibleByText(text:string): Promise<boolean> {

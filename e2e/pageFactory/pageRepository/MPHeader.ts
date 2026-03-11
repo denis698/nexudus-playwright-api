@@ -16,6 +16,10 @@ export class MPHeader extends MPHeaderObjects {
   async verifyAt(): Promise<void> {
     await webActions.verifyPageElement(MPHeaderObjects.HEADER);
   }
+
+  async accessProfileMenuWithName(name:string): Promise<void> {
+      await webActions.clickElementByFirstRole('button', name);
+  }
  
   async accessMarketing(): Promise<void> {
     await webActions.clickElement(MPHeaderObjects.PROFILE_ICON);
@@ -83,4 +87,9 @@ export class MPHeader extends MPHeaderObjects {
     await this.accessProfileMenu();
     await webActions.clickElementByRole('button', 'Sign out');    
   }
+  
+  async isElementVisibleByFirstRole(role:any, name:string): Promise<boolean> {
+    return await webActions.isVisibleByFirstRole(role, name)
+  }
+
 }
