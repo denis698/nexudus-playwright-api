@@ -25,7 +25,7 @@ test.describe('navigation->menus', () => {
                                  "Storage units",
                                  "Treatment rooms"];    
 
-    await mpHeader.accessProfileMenuWithName('Bookings');
+    await mpHeader.accessMenuWithName('Bookings');
     for (var option of bookingMenuOptions) {
       console.log("booking menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
@@ -42,7 +42,7 @@ test.describe('navigation->menus', () => {
                                "Other products",
                                "Stationary"];    
 
-    await mpHeader.accessProfileMenuWithName('Store');
+    await mpHeader.accessMenuWithName('Store');
     for (var option of storeMenuOptions) {
       console.log("store menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
@@ -65,7 +65,7 @@ test.describe('navigation->menus', () => {
                                      "Virtual offices",
                                      "Virtual plans"];    
 
-    await mpHeader.accessProfileMenuWithName('Memberships');
+    await mpHeader.accessMenuWithName('Memberships');
     for (var option of membershipsMenuOptions) {
       console.log("memberships menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
@@ -82,7 +82,7 @@ test.describe('navigation->menus', () => {
                                    "Events",
                                    "Courses"];    
 
-    await mpHeader.accessProfileMenuWithName('Community');
+    await mpHeader.accessMenuWithName('Community');
     for (var option of communityMenuOptions) {
       console.log("community menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);

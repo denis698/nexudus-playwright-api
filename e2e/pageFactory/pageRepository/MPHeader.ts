@@ -17,7 +17,7 @@ export class MPHeader extends MPHeaderObjects {
     await webActions.verifyPageElement(MPHeaderObjects.HEADER);
   }
 
-  async accessProfileMenuWithName(name:string): Promise<void> {
+  async accessMenuWithName(name:string): Promise<void> {
       await webActions.clickElementByFirstRole('button', name);
   }
  
