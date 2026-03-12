@@ -18,7 +18,12 @@ export class MPHeader extends MPHeaderObjects {
   }
 
   async accessMenuWithName(name:string): Promise<void> {
-      await webActions.clickElementByFirstRole('button', name);
+    await webActions.focusOnElementByFirstRole('button', name);
+    await webActions.clickElementByFirstRole('button', name);
+  }
+
+  async hoverOverMenuWithName(name:string): Promise<void> {
+    await webActions.clickElementByFirstRole('button', name);
   }
  
   async accessMarketing(): Promise<void> {
@@ -90,6 +95,14 @@ export class MPHeader extends MPHeaderObjects {
   
   async isElementVisibleByFirstRole(role:any, name:string): Promise<boolean> {
     return await webActions.isVisibleByFirstRole(role, name)
+  }
+
+  async isMenusVisibleFirstRole(role:any, name:string): Promise<boolean> {
+    return await webActions.isVisibleByFirstRole(role, name)
+  }
+
+  async waitUntilMenuVisibleWithName(role:any,name:string): Promise<void> {
+    await webActions.waitUntilElementVisible(role,name);
   }
 
 }

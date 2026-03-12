@@ -56,6 +56,10 @@ export class WebActions {
     await expect(this.page.getByRole(role, { name: roleName })).toHaveCount(1);
   }
 
+  async waitUntilElementVisible(role:any,name:string): Promise<void> {
+    await expect(this.page.getByRole(role,{name:name})).toBeVisible();
+  }
+
   async waitForPageElement(locator: string): Promise<void> {
     await expect(this.page.locator(locator)).toBeVisible();
   }
@@ -248,6 +252,20 @@ export class WebActions {
       .click({ force: true });
   }
 
+  async hoverOverElementByFirstRole(role: any, name: string): Promise<void> {
+    await this.page
+      .getByRole(role, { name: name })
+      .first()
+      .hover();
+  }
+
+  async focusOnElementByFirstRole(role: any, name: string): Promise<void> {
+    await this.page
+      .getByRole(role, { name: name })
+      .first()
+      .focus({ timeout: 5000 });
+  }
+
   async findElementByLabelClickByRole(label:string, role: any, name: string): Promise<void> {
     await this.page.getByLabel(label).getByRole(role, { name: name }).click();
   }
@@ -280,7 +298,7 @@ export class WebActions {
     await this.page.getByLabel(label).getByRole(role, { name: name }).click();
   }
 
-  async clickElementByLocatorAndFilter(label: string,name: string): Promise<void> {
+  async clickElementByLocatorAndFilter(label:string,name:string): Promise<void> {
     await this.page.locator(label).filter({ hasText: name }).click();
   }
 

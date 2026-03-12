@@ -1,5 +1,4 @@
 import test from '@lib/BaseTest';
-import menuData from './testdata/mp/navigation/profile_menu.json';
 import { expect } from '@playwright/test';
 
 test.beforeEach(async ({ mpLoginPage }) => {
@@ -8,8 +7,8 @@ test.beforeEach(async ({ mpLoginPage }) => {
 });
 
 test.describe('navigation->menus', () => {
-  test(`@NHA_01 @smoke @mp.nav.menu - bookings menu`, async ({mpHeader,mpMarketingPage}) => {
-    await mpMarketingPage.verifyAt();   
+  test(`@NHA_01 @smoke @mp.nav.menu - bookings`, async ({mpHeader,mpMarketingPage}) => {
+    await mpMarketingPage.verifyAt(); 
     const bookingMenuOptions  = ["Day offices",
                                  "Event spaces",
                                  "Hot desks",
@@ -33,14 +32,16 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_02 @smoke @mp.nav.menu - store manu`, async ({mpHeader,mpMarketingPage }) => {
+  test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();   
+    //make sure that Memberships menu is displayed                           
+    await mpHeader.waitUntilMenuVisibleWithName('button',"Memberships");
     const storeMenuOptions  = ["Booking features",
                                "Booking products",
                                "Credit bundles",
                                "Day passes",
                                "Other products",
-                               "Stationary"];    
+                               "Stationary"];
 
     await mpHeader.accessMenuWithName('Store');
     for (var option of storeMenuOptions) {
@@ -50,8 +51,8 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_03 @smoke @mp.nav.menu - membeships menu`, async ({mpHeader,mpMarketingPage }) => {
-    await mpMarketingPage.verifyAt();   
+  test(`@NHA_03 @smoke @mp.nav.menu - membeships`, async ({mpHeader,mpMarketingPage }) => {
+    await mpMarketingPage.verifyAt();  
     const membershipsMenuOptions  = ["Dedicated desks",
                                      "Full-time plans",
                                      "Hot desks",
@@ -73,7 +74,7 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_04 @smoke @mp.nav.menu - community menu`, async ({mpHeader,mpMarketingPage }) => {
+  test(`@NHA_04 @smoke @mp.nav.menu - community`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();   
     const communityMenuOptions  = ["Perks",
                                    "Discussion boards",
