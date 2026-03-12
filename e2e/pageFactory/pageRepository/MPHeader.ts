@@ -20,6 +20,10 @@ export class MPHeader extends MPHeaderObjects {
   async accessMenuWithName(name:string): Promise<void> {
     await webActions.clickElementByFirstRole('button', name);
   }
+
+  async focusOnMenuWithName(name:string): Promise<void> {
+    await webActions.focusOnElementByFirstRole('button', name);
+  }
  
   async accessMarketing(): Promise<void> {
     await webActions.clickElement(MPHeaderObjects.PROFILE_ICON);

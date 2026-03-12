@@ -38,6 +38,7 @@ test.describe('navigation->menus', () => {
     await mpHeader.waitUntilMenuVisibleWithName('button',"Store");
     await mpHeader.waitUntilMenuVisibleWithName('button',"Memberships");
     await mpHeader.waitUntilMenuVisibleWithName('button',"Community");
+    await mpHeader.focusOnMenuWithName('Store');
     await mpHeader.accessMenuWithName('Store');
     const storeMenuOptions  = ["Booking features",
                                "Booking products",
