@@ -18,11 +18,6 @@ export class MPHeader extends MPHeaderObjects {
   }
 
   async accessMenuWithName(name:string): Promise<void> {
-    await webActions.focusOnElementByFirstRole('button', name);
-    await webActions.clickElementByFirstRole('button', name);
-  }
-
-  async hoverOverMenuWithName(name:string): Promise<void> {
     await webActions.clickElementByFirstRole('button', name);
   }
  

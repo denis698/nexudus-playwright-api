@@ -35,7 +35,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       # Step to set up the Node.js version
-      - name: Install node js v20
+      - name: Install latest node js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*

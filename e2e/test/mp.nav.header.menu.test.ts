@@ -36,14 +36,14 @@ test.describe('navigation->menus', () => {
     await mpMarketingPage.verifyAt();   
     //make sure that Memberships menu is displayed                           
     await mpHeader.waitUntilMenuVisibleWithName('button',"Memberships");
+    await mpHeader.accessMenuWithName('Store');
+    await mpHeader.waitUntilMenuVisibleWithName('link',"Booking features");
     const storeMenuOptions  = ["Booking features",
                                "Booking products",
                                "Credit bundles",
                                "Day passes",
                                "Other products",
                                "Stationary"];
-
-    await mpHeader.accessMenuWithName('Store');
     for (var option of storeMenuOptions) {
       console.log("store menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);

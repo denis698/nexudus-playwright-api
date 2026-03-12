@@ -57,7 +57,7 @@ export class WebActions {
   }
 
   async waitUntilElementVisible(role:any,name:string): Promise<void> {
-    await expect(this.page.getByRole(role,{name:name})).toBeVisible();
+    await expect(this.page.getByRole(role,{name:name}).first()).toBeVisible();
   }
 
   async waitForPageElement(locator: string): Promise<void> {
@@ -263,7 +263,7 @@ export class WebActions {
     await this.page
       .getByRole(role, { name: name })
       .first()
-      .focus({ timeout: 5000 });
+      .focus();
   }
 
   async findElementByLabelClickByRole(label:string, role: any, name: string): Promise<void> {
