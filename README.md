@@ -35,3 +35,19 @@ API_TEST_PASSWORD=''
 
 3. run tests: npm test:chrome
     - i.e. npx playwright test -g"@smoke" --project="chrome"
+
+## Switching Between Env Files
+- Create `.env.local` and `.env.staging` alongside the default `.env` template.
+- Run `npm run test:local` to execute tests with `.env.local`.
+- Run `npm run test:staging` to execute tests with `.env.staging`.
+- For a narrower Chromium run, use `npm run test:local:chromium` or `npm run test:staging:chromium`.
+
+## QA User Env Files
+- Shareable templates are committed as `.env.example`, `.env.local.example`, `.env.staging.example`, and `.env.steven.example`.
+- Copy the example file you need to its local counterpart before running tests.
+- Example: `cp .env.steven.example .env.steven`
+- Example: `cp .env.staging.example .env.staging`
+- Keep real `.env*` files local only. They are ignored by git so credentials are not committed.
+- The repository includes a tracked `.env.steven` file for Steven's shared QA setup.
+- Run `npm run test:steven` to use Steven's environment.
+- For Chromium-only runs, use `npm run test:steven:chromium`.

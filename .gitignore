@@ -8,6 +8,12 @@
 /playwright-report
 /playwright/.cache
 .env
+.env.*
+!.env.steven
+!.env.example
+!.env.local.example
+!.env.staging.example
+!.env.steven.example
 /html-report
 test-result.json
 LighthouseReport.html
