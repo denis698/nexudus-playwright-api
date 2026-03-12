@@ -24,7 +24,7 @@ test.describe('navigation->menus', () => {
                                  "Storage units",
                                  "Treatment rooms"];    
 
-    await mpHeader.accessMenuWithName('Bookings');
+    await mpHeader.clickOnMenuWithName('Bookings');
     for (var option of bookingMenuOptions) {
       console.log("booking menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
@@ -34,12 +34,9 @@ test.describe('navigation->menus', () => {
 
   test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();   
-    await mpHeader.waitUntilMenuVisibleWithName('button',"Bookings");
-    await mpHeader.waitUntilMenuVisibleWithName('button',"Store");
     await mpHeader.waitUntilMenuVisibleWithName('button',"Memberships");
-    await mpHeader.waitUntilMenuVisibleWithName('button',"Community");
-    await mpHeader.focusOnMenuWithName('Store');
-    await mpHeader.accessMenuWithName('Store');
+    await mpHeader.clickOnMenuWithName('Bookings');
+    await mpHeader.clickOnMenuWithName('Store');
     const storeMenuOptions  = ["Booking features",
                                "Booking products",
                                "Credit bundles",
@@ -68,7 +65,7 @@ test.describe('navigation->menus', () => {
                                      "Virtual offices",
                                      "Virtual plans"];    
 
-    await mpHeader.accessMenuWithName('Memberships');
+    await mpHeader.clickOnMenuWithName('Memberships');
     for (var option of membershipsMenuOptions) {
       console.log("memberships menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
@@ -85,7 +82,7 @@ test.describe('navigation->menus', () => {
                                    "Events",
                                    "Courses"];    
 
-    await mpHeader.accessMenuWithName('Community');
+    await mpHeader.clickOnMenuWithName('Community');
     for (var option of communityMenuOptions) {
       console.log("community menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
