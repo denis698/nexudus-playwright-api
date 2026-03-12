@@ -34,10 +34,11 @@ test.describe('navigation->menus', () => {
 
   test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();   
-    //make sure that Memberships menu is displayed                           
+    await mpHeader.waitUntilMenuVisibleWithName('button',"Bookings");
+    await mpHeader.waitUntilMenuVisibleWithName('button',"Store");
     await mpHeader.waitUntilMenuVisibleWithName('button',"Memberships");
+    await mpHeader.waitUntilMenuVisibleWithName('button',"Community");
     await mpHeader.accessMenuWithName('Store');
-    await mpHeader.waitUntilMenuVisibleWithName('link',"Booking features");
     const storeMenuOptions  = ["Booking features",
                                "Booking products",
                                "Credit bundles",

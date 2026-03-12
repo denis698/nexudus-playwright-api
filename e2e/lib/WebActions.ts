@@ -245,23 +245,23 @@ export class WebActions {
     await this.page.hover(element, { force: true });
   }
 
-  async clickElementByFirstRole(role: any, roleName: string): Promise<void> {
+  async clickElementByFirstRole(role:any,name:string): Promise<void> {
     await this.page
-      .getByRole(role, { name: roleName })
+      .getByRole(role,{name:name})
       .first()
-      .click({ force: true });
+      .click({force:true});
   }
 
-  async hoverOverElementByFirstRole(role: any, name: string): Promise<void> {
+  async hoverOverElementByFirstRole(role:any,name:string): Promise<void> {
     await this.page
-      .getByRole(role, { name: name })
+      .getByRole(role,{name:name})
       .first()
-      .hover();
+      .hover({force:true});
   }
 
-  async focusOnElementByFirstRole(role: any, name: string): Promise<void> {
+  async focusOnElementByFirstRole(role:any,name:string): Promise<void> {
     await this.page
-      .getByRole(role, { name: name })
+      .getByRole(role,{name:name})
       .first()
       .focus();
   }
