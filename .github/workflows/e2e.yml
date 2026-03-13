@@ -84,7 +84,7 @@ jobs:
       - name: Test Report
         id: test-report # Set ID reference for step
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: monocart-results
           path: ./monocart-results/*
