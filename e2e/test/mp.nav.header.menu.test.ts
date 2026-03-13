@@ -7,7 +7,7 @@ test.beforeEach(async ({ mpLoginPage }) => {
 });
 
 test.describe('navigation->menus', () => {
-  test(`@NHA_01 @smoke @mp.nav.menu - bookings`, async ({mpHeader,mpMarketingPage}) => {
+  test(`@NHA_01 @smoke @mp.header.menu - bookings`, async ({mpHeader,mpMarketingPage}) => {
     await mpMarketingPage.verifyAt(); 
     const bookingMenuOptions  = ["Day offices",
                                  "Event spaces",
@@ -31,7 +31,7 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
+  test(`@NHA_02 @smoke @mp.header.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt(); 
     const storeMenuOptions  =   ["Booking features",
                                  "Booking products",
@@ -52,7 +52,7 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_03 @smoke @mp.nav.menu - membeships`, async ({mpHeader,mpMarketingPage }) => {
+  test(`@NHA_03 @smoke @mp.header.menu - membeships`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();  
     const membershipsMenuOptions  = ["Dedicated desks",
                                      "Full-time plans",
@@ -74,7 +74,7 @@ test.describe('navigation->menus', () => {
     }
   });
 
-  test(`@NHA_04 @smoke @mp.nav.menu - community`, async ({mpHeader,mpMarketingPage }) => {
+  test(`@NHA_04 @smoke @mp.header.menu - community`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt();   
     const communityMenuOptions  = ["Perks",
                                    "Discussion boards",
