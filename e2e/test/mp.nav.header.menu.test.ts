@@ -34,13 +34,17 @@ test.describe('navigation->menus', () => {
 
   test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt(); 
-    const storeMenuOptions  =   ["Booking products",
+    const storeMenuOptions  =   ["Booking features",
+                                 "Booking products",
                                  "Credit bundles",
                                  "Day passes",
                                  "Other products",
                                  "Stationary"];
     
+    await mpHeader.waitUntilMenuVisibleWithName('button', 'Memberships');
+    await mpHeader.focusOnMenuWithName('Store');
     await mpHeader.clickOnMenuWithName('Store');
+    await mpHeader.delayInTest(2000); //adding a delay for menu to expand
     for (var option of storeMenuOptions) {
       console.log("store menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
