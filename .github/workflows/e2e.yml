@@ -10,7 +10,7 @@ on:
         required: true
         default: 'Testing Member Portal V5'
   schedule: #Schedule the e2e job to run at 10:30 pm daily.
-    - cron: '30 22 * * *' 
+    - cron: '30 23 * * *' 
 
 # Define the jobs to run in this workflow
 jobs:
