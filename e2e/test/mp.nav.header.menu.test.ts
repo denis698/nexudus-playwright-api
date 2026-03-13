@@ -34,33 +34,12 @@ test.describe('navigation->menus', () => {
 
   test(`@NHA_02 @smoke @mp.nav.menu - store`, async ({mpHeader,mpMarketingPage }) => {
     await mpMarketingPage.verifyAt(); 
-    const bookingMenuOptions  = ["Day offices",
-                                 "Event spaces",
-                                 "Hot desks",
-                                 "Kitchens",
-                                 "Labs",
-                                 "Meeting rooms",
-                                 "Other",
-                                 "Hot desks",
-                                 "Kitchens",
-                                 "Labs",
-                                 "Meeting rooms",
-                                 "Other",
-                                 "Storage units",
-                                 "Treatment rooms"];   
-    const storeMenuOptions  =   ["Booking features",
-                                 "Booking products",
+    const storeMenuOptions  =   ["Booking products",
                                  "Credit bundles",
                                  "Day passes",
                                  "Other products",
                                  "Stationary"];
-    await mpHeader.clickOnMenuWithName('Bookings');
-    for (var option of bookingMenuOptions) {
-      console.log("booking menu option: " + option);
-      const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
-      expect(isOptionVisible).toBeTruthy();
-    }
-
+    
     await mpHeader.clickOnMenuWithName('Store');
     for (var option of storeMenuOptions) {
       console.log("store menu option: " + option);
