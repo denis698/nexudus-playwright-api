@@ -1,4 +1,5 @@
 export class MPMarketingPageObjects {
+  protected static PAGE_URL = `/denis690`;
   protected static SIGN_IN_BUTTON = `text="Sign in"`;
   protected static SEARCH = `text="Search"`;
 }

@@ -18,6 +18,7 @@ export class MPMarketingPage extends MPMarketingPageObjects {
   }
 
   async verifyAt(): Promise<void> {
+    await webActions.waitForURL(MPMarketingPageObjects.PAGE_URL);
     await webActions.verifyPageElement(MPMarketingPageObjects.SEARCH);
   }
 

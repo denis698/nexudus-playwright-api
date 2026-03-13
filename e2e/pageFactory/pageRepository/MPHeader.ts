@@ -21,8 +21,8 @@ export class MPHeader extends MPHeaderObjects {
     await webActions.clickElementByFirstRole('button', name);
   }
 
-  async dbclickOnMenuWithName(name:string): Promise<void> {
-    await webActions.dbclickElementByFirstRole('button', name);
+  async pressEnter(): Promise<void> {
+    await webActions.keyboardEnter('Enter');
   }
 
   async focusOnMenuWithName(name:string): Promise<void> {
