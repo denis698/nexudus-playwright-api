@@ -42,20 +42,8 @@ test.describe('navigation->menus', () => {
                                  "Stationary"];
     
     await mpHeader.waitUntilMenuVisibleWithName('button', 'Memberships');
-    await mpHeader.focusOnMenuWithName('Bookings');
-    await mpHeader.clickOnMenuWithName('Bookings');
-    await mpHeader.delayInTest(2000); //adding a delay for menu to expand
-    
-    await mpHeader.focusOnMenuWithName('Memberships');
-    await mpHeader.clickOnMenuWithName('Memberships');
-    await mpHeader.delayInTest(2000); //adding a delay for menu to expand
-    
-    await mpHeader.focusOnMenuWithName('Community');
-    await mpHeader.clickOnMenuWithName('Community');
-    await mpHeader.delayInTest(2000); //adding a delay for menu to expand
-    
     await mpHeader.focusOnMenuWithName('Store');
-    await mpHeader.clickOnMenuWithName('Store');
+    await mpHeader.dbclickOnMenuWithName('Store');
     await mpHeader.delayInTest(2000); //adding a delay for menu to expand
 
     for (var option of storeMenuOptions) {

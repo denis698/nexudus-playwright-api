@@ -252,6 +252,13 @@ export class WebActions {
       .click({force:true});
   }
 
+  async dbclickElementByFirstRole(role:any,name:string): Promise<void> {
+    await this.page
+      .getByRole(role,{name:name})
+      .first()
+      .dblclick({force:true});
+  }
+
   async hoverOverElementByFirstRole(role:any,name:string): Promise<void> {
     await this.page
       .getByRole(role,{name:name})
