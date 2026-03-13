@@ -29,10 +29,6 @@ export class MPHeader extends MPHeaderObjects {
     await webActions.delay(time);
   }
 
-  async hoverOverMenuWithName(name:string): Promise<void> {
-    await webActions.hoverOverElementByFirstRole('button', name);
-  }
- 
   async accessMarketing(): Promise<void> {
     await webActions.clickElement(MPHeaderObjects.PROFILE_ICON);
   }
