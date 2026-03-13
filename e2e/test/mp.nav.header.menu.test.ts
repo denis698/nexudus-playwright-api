@@ -26,7 +26,6 @@ test.describe('navigation->menus', () => {
 
     await mpHeader.clickOnMenuWithName('Bookings');
     for (var option of bookingMenuOptions) {
-      console.log("booking menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
       expect(isOptionVisible).toBeTruthy();
     }
@@ -48,7 +47,6 @@ test.describe('navigation->menus', () => {
     await mpHeader.delayInTest(2000); //adding a delay for menu to expand
 
     for (var option of storeMenuOptions) {
-      console.log("store menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
       expect(isOptionVisible).toBeTruthy();
     }
@@ -71,7 +69,6 @@ test.describe('navigation->menus', () => {
 
     await mpHeader.clickOnMenuWithName('Memberships');
     for (var option of membershipsMenuOptions) {
-      console.log("memberships menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
       expect(isOptionVisible).toBeTruthy();
     }
@@ -88,7 +85,6 @@ test.describe('navigation->menus', () => {
 
     await mpHeader.clickOnMenuWithName('Community');
     for (var option of communityMenuOptions) {
-      console.log("community menu option: " + option);
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
       expect(isOptionVisible).toBeTruthy();
     }
