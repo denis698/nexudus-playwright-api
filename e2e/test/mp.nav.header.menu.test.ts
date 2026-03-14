@@ -41,11 +41,8 @@ test.describe('navigation->menus', () => {
                                  "Stationary"];
     
     await mpHeader.delayInTest(5000); //temp code
-    //await mpHeader.focusOnMenuWithName('Store');
     await mpHeader.clickOnMenuWithName('Store');
     await mpHeader.pressEnter();
-    //await mpHeader.delayInTest(2000); //temp code - adding a delay for menu to expand
-
     for (var option of storeMenuOptions) {
       const isOptionVisible = await mpHeader.isElementVisibleByFirstRole('link', option);
       expect(isOptionVisible).toBeTruthy();
