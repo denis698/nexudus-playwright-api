@@ -14,7 +14,7 @@ export class MPHeader extends MPHeaderObjects {
   }
 
   async verifyAt(): Promise<void> {
-    await webActions.verifyPageElement(MPHeaderObjects.HEADER);
+    await webActions.verifyPageElement(MPHeaderObjects.PROFILE_ICON);
   }
 
   async clickOnMenuWithName(name:string): Promise<void> {
@@ -85,8 +85,8 @@ export class MPHeader extends MPHeaderObjects {
 
   async accessFAQs(): Promise<void> {
     await this.accessProfileMenu();
-    await webActions.clickElementByExactRole('link', 'Help & support arrow-right icon');
-    await webActions.clickElementByExactRole('link', 'FAQs');    
+    await webActions.clickElementByRole('link', 'Help & support arrow-right icon');
+    await webActions.clickElementByRole('link', 'FAQs');    
   }
 
   async accessHelpSupport(): Promise<void> {
@@ -101,10 +101,6 @@ export class MPHeader extends MPHeaderObjects {
   }
   
   async isElementVisibleByFirstRole(role:any, name:string): Promise<boolean> {
-    return await webActions.isVisibleByFirstRole(role, name)
-  }
-
-  async isMenusVisibleFirstRole(role:any, name:string): Promise<boolean> {
     return await webActions.isVisibleByFirstRole(role, name)
   }
 

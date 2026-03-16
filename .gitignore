@@ -25,3 +25,6 @@ allure-results
 # Playwright
 node_modules/
 /blob-report/
+
+# VS code
+/.vscode
